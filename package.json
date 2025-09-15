@@ -1,0 +1,31 @@
+{
+  "name": "phala-mcp",
+  "version": "0.1.0",
+  "main": "mcp/index.js",
+  "author": "Tairon.ai",
+  "homepage": "https://tairon.ai",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "mcp": "node mcp/index.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@phala/sdk": "^0.5.6",
+    "@polkadot/api": "^10.11.2",
+    "@polkadot/api-contract": "^10.11.2",
+    "@polkadot/keyring": "^12.6.2",
+    "@polkadot/rpc-provider": "^10.11.2",
+    "@polkadot/util": "^12.6.2",
+    "@polkadot/util-crypto": "^12.6.2",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ethers": "^5.8.0",
+    "express": "^4.21.2",
+    "uuid": "^11.1.0",
+    "ws": "^8.18.3",
+    "zod": "^3.24.2"
+  }
+}

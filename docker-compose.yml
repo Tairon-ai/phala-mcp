@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  phala-mcp:
+    build: .
+    image: phala-mcp:latest
+    container_name: phala-mcp
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+      - PHALA_RPC_URL=${PHALA_RPC_URL:-https://api.phala.network/rpc}
+      - PHALA_PHAT_RPC_URL=${PHALA_PHAT_RPC_URL:-https://api.phala.network/phat}
+      - PHALA_API_KEY=${PHALA_API_KEY}
+      - WALLET_SEED_PHRASE=${WALLET_SEED_PHRASE}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8080/health', (r) => {r.statusCode === 200 ? process.exit(0) : process.exit(1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.phala.service=mcp"
+      - "com.phala.version=0.1.0"
+      - "com.phala.chain=phala"
